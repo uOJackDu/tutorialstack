@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/tutorialstack/home/static/css/main.779e489b.css",
-    "main.js": "/tutorialstack/home/static/js/main.a230e066.js",
-    "static/js/453.248d1903.chunk.js": "/tutorialstack/home/static/js/453.248d1903.chunk.js",
-    "index.html": "/tutorialstack/home/index.html",
-    "main.779e489b.css.map": "/tutorialstack/home/static/css/main.779e489b.css.map",
-    "main.a230e066.js.map": "/tutorialstack/home/static/js/main.a230e066.js.map",
-    "453.248d1903.chunk.js.map": "/tutorialstack/home/static/js/453.248d1903.chunk.js.map"
+    "main.css": "/tutorialstack/static/css/main.779e489b.css",
+    "main.js": "/tutorialstack/static/js/main.40c93993.js",
+    "static/js/453.248d1903.chunk.js": "/tutorialstack/static/js/453.248d1903.chunk.js",
+    "index.html": "/tutorialstack/index.html",
+    "main.779e489b.css.map": "/tutorialstack/static/css/main.779e489b.css.map",
+    "main.40c93993.js.map": "/tutorialstack/static/js/main.40c93993.js.map",
+    "453.248d1903.chunk.js.map": "/tutorialstack/static/js/453.248d1903.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.779e489b.css",
-    "static/js/main.a230e066.js"
+    "static/js/main.40c93993.js"
   ]
 }
