@@ -1,58 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './BrowsePage.css';
-
-const communities = [
-  { title: 'English', description: 'Literature & more' },
-  { title: 'Math', description: 'Classic' },
-  { title: 'Physics', description: 'Let\'s do Physics' },
-  { title: 'Gaming', description: 'Games' },
-  { title: 'Minecraft', description: 'Play Minecraft' },
-  { title: 'Cooking', description: 'Make food' },
-  { title: 'Writing', description: 'Write stuff' },
-  { title: 'Programming', description: 'Coding' },
-  { title: 'Tutorial', description: 'How to write tutorials' },
-  { title: 'Organization', description: 'How to organize stuff' },
-  { title: 'Fishing', description: 'Yes' },
-  { title: 'Computer', description: 'Computer stuff' },
-  { title: 'English', description: 'Literature & more' },
-  { title: 'Math', description: 'Classic' },
-  { title: 'Physics', description: 'Let\'s do Physics' },
-  { title: 'Gaming', description: 'Games' },
-  { title: 'Minecraft', description: 'Play Minecraft' },
-  { title: 'Cooking', description: 'Make food' },
-  { title: 'Writing', description: 'Write stuff' },
-  { title: 'Programming', description: 'Coding' },
-  { title: 'Tutorial', description: 'How to write tutorials' },
-  { title: 'Organization', description: 'How to organize stuff' },
-  { title: 'Fishing', description: 'Yes' },
-  { title: 'Computer', description: 'Computer stuff' },
-  { title: 'English', description: 'Literature & more' },
-  { title: 'Math', description: 'Classic' },
-  { title: 'Physics', description: 'Let\'s do Physics' },
-  { title: 'Gaming', description: 'Games' },
-  { title: 'Minecraft', description: 'Play Minecraft' },
-  { title: 'Cooking', description: 'Make food' },
-  { title: 'Writing', description: 'Write stuff' },
-  { title: 'Programming', description: 'Coding' },
-  { title: 'Tutorial', description: 'How to write tutorials' },
-  { title: 'Organization', description: 'How to organize stuff' },
-  { title: 'Fishing', description: 'Yes' },
-  { title: 'Computer', description: 'Computer stuff' },
-];
+import communities from '../communities';
+import TextBox from './TextBox';
 
 const BrowsePage = () => {
+  const [search, setSearch] = useState('');
+
+  const handleSearchChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const filterCommunities = (communities, query) => {
+    if (!query) {
+      return communities;
+    }
+    query = query.toLowerCase();
+
+    return communities.filter((community) => {
+      return (
+        community.title.toLowerCase().includes(query)
+        || community.description.toLowerCase().includes(query)
+      );
+    });
+  };
+
+  const filteredCommunities = filterCommunities(communities, search);
+
   return (
     <div className="browse-page">
       <h2>Browse Communities</h2>
-      <div className="search-bar">
-        <input type="text" placeholder="Search communities..." />
-      </div>
+      <TextBox
+        value={search}
+        onChange={handleSearchChange}
+        placeholder="Search communities..."
+      />
       <div className="community-list">
-        {communities.map((community, index) => (
-          <div key={index} className="community-item">
+        {filteredCommunities.map((community, index) => (
+          <Link to={`/community/${community.title}`} key={index} className="community-item">
             <h3>{community.title}</h3>
             <p>{community.description}</p>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

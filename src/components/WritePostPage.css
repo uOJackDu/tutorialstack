@@ -1,0 +1,36 @@
+.write-post-page {
+  margin: 0 10%;
+  padding: 0 8px;
+}
+
+.write-post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.write-post-content {
+  padding: 8px;
+  font-size: 0.875rem;
+  min-height: 150px;
+  resize: vertical;
+}
+
+.file-label {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.file-input {
+  padding: 10px;
+}
+
+.post-button {
+  align-self: flex-end;
+}

@@ -1,29 +1,34 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { FaThumbsUp, FaComment } from 'react-icons/fa';
-import './HomePage.css';
+import './CommunityPage.css';
 import Button from './Button';
 import TextBox from './TextBox';
 
-const HomePage = ({ tutorials }) => {
+const CommunityPage = ({ tutorials, joinedCommunities, setJoinedCommunities }) => {
+  const { community } = useParams();
   const [search, setSearch] = useState('');
-  const location = useLocation();
-
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const searchQuery = params.get('search');
-    if (searchQuery) {
-      setSearch(decodeURIComponent(searchQuery));
-    }
-  }, [location]);
+  const navigate = useNavigate();
 
   const handleSearchChange = (e) => {
     setSearch(e.target.value);
   };
 
-  const filterTutorials = (tutorials, query) => {
+  const handleJoinCommunity = () => {
+    if (joinedCommunities.includes(community)) {
+      setJoinedCommunities(joinedCommunities.filter(c => c !== community));
+    } else {
+      setJoinedCommunities([...joinedCommunities, community]);
+    }
+  };
+
+  const handleWritePost = () => {
+    navigate(`/community/${community}/write-post/`);
+  };
+
+  const filterTutorials = (tutorials, query, community) => {
     if (!query) {
-      return tutorials;
+      return tutorials.filter(tutorial => tutorial.community === community);
     }
     query = query.toLowerCase();
     const tagQueries = query.match(/\+[^\s]+/g) || [];
@@ -35,19 +40,28 @@ const HomePage = ({ tutorials }) => {
       );
 
       const matchesNonTagQuery = nonTagQuery
-        ? tutorial.title.toLowerCase().includes(nonTagQuery)
-          || tutorial.author.toLowerCase().includes(nonTagQuery)
+        ? tutorial.title.toLowerCase().includes(nonTagQuery) ||
+          tutorial.author.toLowerCase().includes(nonTagQuery)
         : true;
 
-      return matchesTags && matchesNonTagQuery;
+      return tutorial.community === community && matchesTags && matchesNonTagQuery;
     });
   };
 
-  const filteredTutorials = filterTutorials(tutorials, search);
+  const filteredTutorials = filterTutorials(tutorials, search, community);
 
   return (
-    <div className="home-page">
-      <h2>Home</h2>
+    <div className="community-page">
+      <h2>{community} Community</h2>
+      <div className="button-group">
+        <Button
+          onClick={handleJoinCommunity}
+          className={joinedCommunities.includes(community) ? 'joined-button' : 'join-button'}
+        >
+          {joinedCommunities.includes(community) ? 'Joined' : 'Join'}
+        </Button>
+        <Button onClick={handleWritePost}>Write a Tutorial</Button>
+      </div>
       <div className="search-section">
         <div className="search-bar-row">
           <TextBox
@@ -56,7 +70,7 @@ const HomePage = ({ tutorials }) => {
             onChange={handleSearchChange}
             placeholder="Search..."
           />
-          <Button>Search</Button>
+          <Button className="search-button">Search</Button>
         </div>
         <p className='search-hint'>hint: search by tag using <strong>+tag_name</strong> (e.g. <strong>+computer +hardware how to</strong>)</p>
       </div>
@@ -83,4 +97,4 @@ const HomePage = ({ tutorials }) => {
   );
 };
 
-export default HomePage;
+export default CommunityPage;

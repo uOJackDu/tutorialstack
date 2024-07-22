@@ -1,20 +1,10 @@
 .browse-page {
+  margin: 0 10%;
   padding: 0 8px;
-  display: flex;
-  flex-direction: column;
   height: 100vh;
   overflow: hidden;
-  box-sizing: border-box;
-}
-
-.search-bar {
   display: flex;
-  margin-bottom: 32px;
-  padding: 4px;
-}
-.search-bar input {
-  flex: 1;
-  padding: 8px;
+  flex-direction: column;
 }
 
 .community-list {
@@ -26,6 +16,8 @@
 .community-item {
   padding: 8px;
   text-align: left;
+  text-decoration: none;
+  color: #000000;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
   border-radius: 8px;
   cursor: default;

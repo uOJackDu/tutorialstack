@@ -2,9 +2,24 @@
   width: 200px;
   background-color: #323232;
   color: #ffffff;
-  height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-style: italic;
+  color: #fafafa;
+  text-shadow: 2px 2px 2px #f30559;
+  cursor: default;
+}
+.logo span {
+  margin-left: 10px;
 }
 
 .sidebar-item {
@@ -13,6 +28,7 @@
   padding: 10px;
   text-decoration: none;
   color: inherit;
+  transition: color 0.3s;
   cursor: default;
 }
 .sidebar-item span {
@@ -21,4 +37,7 @@
 .sidebar-item.selected {
   background-color: #fafafa;
   color: #000000;
+}
+.sidebar-item:hover {
+  color: #a0a0a0;
 }

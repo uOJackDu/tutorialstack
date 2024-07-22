@@ -1,14 +1,16 @@
 body {
   margin: 0;
-  overflow: hidden;
   background-color: #fafafa;
+  overflow: hidden;
 }
 
 .App {
   display: flex;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .main-content {
   flex: 1;
-  margin: 0 10%;
+  overflow-y: auto;
 }

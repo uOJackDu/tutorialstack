@@ -1,5 +1,6 @@
 {
   "name": "tutorialstack",
+  "homepage": "https://uojackdu.github.io/tutorialstack/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

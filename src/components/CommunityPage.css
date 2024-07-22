@@ -1,10 +1,19 @@
-.home-page {
+.community-page {
   margin: 0 10%;
   padding: 0 8px;
   height: 100vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.joined-button {
+  background-color: #f30559;
 }
 
 .search-bar-row {
@@ -69,8 +78,9 @@
   margin-top: 4px;
 }
 .tag {
+  display: inline-block;
   margin-right: 4px;
-  padding: 1px;
+  padding: 2px;
   border: 1px solid #323232;
   border-radius: 8px;
   font-size: 0.75rem;
